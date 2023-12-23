@@ -1,0 +1,63 @@
+Q1. What is Emmet ?
+Ans: Emmet is a plugin and developer toolkit that helps improve HTML and CSS wokflows and speeds up work.  
+     For e.g. Create an index.html page and type html:5 and you'll see whole HTML skeleton got generated.
+
+Q2. Difference between library and framework ?
+Ans: Library here means can be applied to smaller parts (for e.g. header, navigation, or any part of code)
+        E.g. React can be applied to one div only and div written on top of it or below of it doesn't going 
+            to be affected by it.
+
+     While framework provides everything required to build an application ssuch complete ecommerce application
+
+Q3. What is CDN? Why do we use it?
+Ans: A CDN or Content Delivery Network improves the speed of a website by placing the content in different
+    servers across the globe.
+    It is then delivered to the application from the nearest server.
+    This process results in faster loading of the website as it 
+    reduces the delivery time and the distance from the server.
+
+    Link: https://codedamn.com/news/reactjs/cdn-in-react-js-framework
+
+Q4. Why is React known as React ?
+Ans: React is known as react becuase:
+    a. It "reacts" quickly to changes without reloading the whole webpage.
+    b. It uses the virtual DOM to efficiently update parts of webpage.
+    c. It's built around components that "react" and update.
+
+    Link: https://www.linkedin.com/pulse/why-react-called-muhammad-irfan-wfrwc/
+
+Q5. What is crossorigin in script tag ?
+Ans: Crossorigin attribute provides support for CORS, defining how the element handles cross-origin requests,
+    thereby enabling the configuration of the CORS requests for the element's fetched data.
+
+    E.g. <script
+            src="https://example.com/example-framework.js"
+            crossorigin="anonymous">
+         </script>
+
+         You are telling a browser to execute the https://example.com/example-framework.js script
+         without sending user-credentials.
+
+Q6. What is difference between React and ReactDOM ?
+Ans: React: 
+        a. React is a component-based library, which means that it allows you to build your UI out of reusable components.
+            This can make your code more modular and easier to maintain.
+
+        b. ReactDOM is a DOM library, which means that it provides methods for interacting with Document Object Model(DOM).
+            DOM is a tree like representation of the HTML document, and 
+            ReactDOM allows you to update the DOM in response to user input or other changes in your state.
+
+    Conclusion: 
+    React is responsible for craeting React elements (document.createElement())
+    while ReactDOM is responsible for rendering React elements to the DOM(rootElement.render()).
+
+Q7. What is difference between react.development.js and react.production.js files via CDN ?
+Ans:        Development Version                   Production Version
+            a. Warning and Error messages         a. No warning or error messages
+            b. Additional features and            b. No additional features and 
+                functionality.                          functionality.
+
+Q8. What is async and defer in javascript ?
+Ans: https://www.youtube.com/watch?v=IrHmpdORLu8
+
+Q9. 
