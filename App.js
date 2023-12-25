@@ -1,4 +1,5 @@
- 
+ import React from "react"; // This react coming from node_modules
+ import ReactDOM from "react-dom/client" 
  // Single div element
  // React.createElement(tag, object(place where you give attribute to your tags), 
  // text or anything we need to put inside tag for example inside h1 tag)
@@ -34,7 +35,7 @@
                 "div",
                 { id: "child" },
                 [
-                    React.createElement("h1", {}, "I'm h1 tag"),
+                    React.createElement("h1", {}, "This is Namaste React"),
                     React.createElement("h2", {}, "I'm h2 tag")
                 ]
             ),
