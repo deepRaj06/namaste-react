@@ -1,0 +1,185 @@
+**********************************************HARI OHM****************************************************
+Note: npx parcel index.html - means executing parcel command for file index.html
+
+i. Creating a script - 
+    a. Can create script for starting our project in(development/production) mode.
+    b. make changes in package.json under scripts object - 
+        "start": "parcel index.html",  --> script for starting our project in development
+        "build": "parcel build index.html" --> script for Creating final build for production
+    c. to run these script in development - npm run start or npm start 
+    d. to run script in build mode - npm run build
+
+    Note: You can't do npm build for production mode ( as it won't allow it).
+
+ii. JSX - 
+    a. Not a part of React.
+    b. It's just make coder life simple.
+    c. It's not HTML inside JS.
+    d. It's alike HTML or XML syntax.
+        E.g. 
+        // creating h1 element using jsx not react
+        const jsxHeading = <h1 id="heading">Namaste React using JSX</h1>
+        a. This is not a pure javascript, hence not understood by javascript(ES6 understood by javascript)
+            JSX code --> transpiled(converted to code browser/React can understand)
+            [transpiled by Parcel, with the help of other packages for e.g. Babel] --> JS Engine
+        b. Babel is transpiling jsx code to code understand by browser
+
+Note: Are you writing code for machines or humans?
+        Ans: We are writing code for both machines and humans but first priority is humans.
+
+    e. working of JSX:
+        JSX code --> React.createElement --> React Element (JS Object) --> HTML Element(render)
+        Doubt: Who is converting JSX code to React.createElement ? 
+                Babel
+    
+    f. you need to give className instead of class in JSX.
+    g. camelCasing format
+    h. To write JSX in multiple line, write it in rounded brackets --> ()
+        e.g.
+            (<h1 id="heading">
+                Namaste React using JSX
+            </h1>)
+
+iii. React Element:
+    a. const jsxHeading = (
+        <h1 className="heading" tabIndex="5">
+            Namaste React using JSX
+        </h1>
+        );
+    b. root.render(jsxHeading);  // To render react element
+
+iv. React Component: 
+    a. Everything in react is a component.
+    b. Two types of components:
+        1. Class based components - old way of writing code
+        2. Functional Component - new way of writing code
+
+    c. React Functional component - normal js Functional
+    d. Always start wuth first letter as capital
+    e. E.g. const HeadingComponent = () => {
+        return <h1>Namaste React Functional Component</h1>
+    }
+    f. A function that return some piece of JSX --> functional component
+    g. A JS function that returns a react element --> functional component.
+
+    h. const fn = () => true;
+    i. const fn = () => {
+        return true;
+    }
+
+    j. 
+    const HeadingComponent = () => {
+        return <h1 className="heading">Namaste React Functional Component</h1>
+    }
+
+    root.render(<HeadingComponent/>) // To render react component
+    // This is how Babel understands 
+
+    k. Component composition:
+        1. When we put component inside another component like below example:
+            const Title = () => (
+                <h1 className="head" tabIndex="5">
+                    Namaste React using JSX
+                </h1>
+            )
+
+            const HeadingComponent = () => {
+                return (
+                <div id="container">
+                    <Title/> or <Title></Title> or {Title()}
+                    <h1 className="heading">Namaste React Functional Component</h1>
+                </div>
+                )
+            }
+    
+    l. 
+        // Arrow based component
+            const Title = () => (
+                <h1 className="head" tabIndex="5">
+                    Namaste React using JSX
+                </h1>
+            )
+        // function based component
+            const Title1 = function () {
+            return (
+                <h1 className="head" tabIndex="5">
+                    Namaste React using JSX
+                </h1>
+            )
+            }
+
+    m. 
+        const number = 10000
+        const HeadingComponent = () => {
+                return (
+                <div id="container">
+                    {
+                        number
+                    }
+                    <h1 className="heading">Namaste React Functional Component</h1>
+                </div>
+                )
+            }
+
+        1. In above component, if you write curly braces --> {} --> inside JSX 
+            then you can write any js code inside it.
+        
+    n. How can we put React element inside React component ?
+        const reactElement = (
+                <h1 className="heading" tabIndex="5">
+                    Namaste React using JSX
+                </h1>
+            );
+        
+        const reactComponent = () => {
+                return (
+                <div id="container">
+                    {
+                        reactElement
+                    }
+                    <h1 className="heading">Namaste React Functional Component</h1>
+                </div>
+                )
+            }
+        1. Like this just put curly braces inside reactComponent and inside it reactElement. 
+
+    o. How can we put React element inside React element ?
+
+        const reactElement1 = (
+                <h1 className="heading" tabIndex="5">
+                    Namaste React using JSX
+                </h1>
+            );
+
+        const reactElement2 = (
+                <h1 className="heading" tabIndex="5">
+                {reactElement1}
+                    Namaste React using JSX
+                </h1>
+            );
+
+        1. Like this just put curly braces inside reactElement and inside it reactElement. 
+
+    v. Cross-site scripting attacks:
+
+        const data = api.getData() // suppose this data is send by attacker
+
+        const HeadingComponent = () => {
+                return (
+                <div id="container">
+                    {
+                        data
+                    }
+                    <h1 className="heading">Namaste React Functional Component</h1>
+                </div>
+                )
+            }
+
+        Note: JSX don't run these data directly, it sanitises it.
+            i.e. attacker won't be able to steal the data.
+    
+    Note: You can call a function inside curly braces like this {Title()}
+
+
+
+        
