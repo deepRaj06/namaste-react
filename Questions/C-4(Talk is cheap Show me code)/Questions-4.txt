@@ -1,0 +1,104 @@
+**************************************************HARI OHM*******************************************************
+Q1. Is JSX mandatory for React ?
+Ans: No, JSX is not mandatory for React.
+    a. Optional syntax extension --> to javascript --> makes easier to write React applications.
+    b. If you do not want to use JSX --> you can use React.createElement() function to create React elements.
+
+Link: Just search Q1. Is JSX mandatory for React and see google AI answer
+
+Q2. Is ES6 mandatory for React ?
+Ans: No, ES6 is not mandatory for React,
+    a. You can use create-react-class module instead:
+        var createReactClass = require('create-rect-class');
+        var Greeting = createReactClass({
+            render: function() {
+                return <h1>Hello, {this.props.name}</h1>
+            }
+        })
+
+Q3. How can I write comments in JSX ?
+Ans: Two ways to comment in JSX:
+
+    i. Single-line comments:
+        a. can use --> //
+            e.g. // Single Line comments
+    
+    ii. Multi-line comments:
+        a. can use --> /*  */
+            e.g. /**
+                * Header
+                *  - logo
+                *  - nav items
+                * Body
+                *  - Search
+                *  - RestaurantContainer
+                *    - RestaurantCard
+                *      - Img
+                *      - Name of res, star rating, cuisine, delivery time etc
+                * Footer
+                *  - Copyright
+                *  - Links
+                *  - Address
+                *  - Contact
+                */
+
+    
+Q4. What is <React.Fragment></React.Fragment> and <></> ?
+Ans: <React.Fragment></React.Fragment> and <></> - both are same
+
+        a. React.Fragment is component --> to group elements together --> without adding an extra DOM node (e.g. without using extra div)
+
+Q5. What is Virtual DOM ?
+Ans: Real DOM:
+            a. DOM - UI of your application.
+            b. Change in state of your application UI --> DOM gets updated to represent that Change.
+            c. Frequently manipulating DOM --> affects performance --> making it slow
+        
+         Reason behind slow DOM manipulation:
+            a. DOM --> represented as tree data structure --> because of that --> changes and updates to DOM are fast.
+            b. After change --> updated element and it's childre need to be re-rendered to update application UI.
+            c. re-rendering or re-painting of UI --> makes it slow.
+            d. more ui components you have --> more expensive DOM updates
+
+         Virtual DOM:
+            a. state of application changes --> virtual DOM gets updated --> compared with old virtaul DOM tree --> only chnaged component gets re-rendered.
+                Hence, reducing performance cost of updating real DOM.
+
+    Link: https://adhithiravi.medium.com/react-virtual-dom-explained-in-simple-english-fc2d0b277bc5
+
+Q6. What is Reconciliation in React ?
+Ans: 
+    a. when component state changes --> React compares previous state of DOM with new state --> identifying the differences --> updating only necessary parts to reflect changes --> This process is --> Reconciliation
+
+Q7. What is React fiber ?
+Ans: Reconciler - 
+        a. An algorithm --> that helps to compare two DOM trees --> and get the difference between the two --> This helps React determine --> what needs to change on the screen
+
+        b. In React 16, Fiber is a new reconciler algorithm
+            1. No longer Reconciliation and rendering done in same process.
+
+Link: https://sunnychopper.medium.com/what-is-react-fiber-and-how-it-helps-you-build-a-high-performing-react-applications-57bceb706ff3
+
+Q8. Why we need keys in React? Can we use index as keys in React ?
+Ans: <RestaurantCard resData={item} key={item?.info?.id}/>
+
+                Because each component should have unique id, 
+                if you do not give unique id and suppose new RestaurantCard came in
+                what will React do is it will re-render all the RestaurantCards
+                (meaning React will clean the while container and then put all the RestaurantCards)
+                Because react doesn't know which RestaurantCard is new, to uniquely identify need to give 
+                unique id or something, now new RestaurantCard came with id, now React knows RestaurantCard 
+                having id = 1, id=2 , id=3 etc, so to put new RestaurantCard, it will render just one
+                RestaurantCard.
+
+         <RestaurantCard resData={item} key={index}/>
+
+            a. React says do not use index as keys.
+            b. not using keys (not acceptable) <<<<<<<<<  index as key(when unique id not available) <<<<<<<< unique id (recommonded)
+
+Q9.  What is config-driven ui ? (industry standard api)
+Ans: a. website --> driven by configs --> 
+        e.g. In swiggy website, offers will be different based on location, you can do this using configs.
+
+
+ 
