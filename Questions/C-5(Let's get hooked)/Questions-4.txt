@@ -1,0 +1,58 @@
+***************************HARI OHM**********************************
+Q1. What is the difference between Named Export, default export and * as export ?
+Ans:    A. Named Export - Under single file, you want to import/export multiple components or values
+            a. import { add, subtract } from './utils';
+            
+                <p>{add(2, 3)}</p>
+                <p>{subtract(4, 3)}</p>
+
+        B. * import - named import can also be exported as * symbol to import all files as an object
+            a. import * as utils from '/utils';
+
+                <p>{utils.add(2, 3)}</p>
+                <p>{utils.subtract(4, 3)}</p>
+
+        C. default export - to import/export only one file
+
+            a. import add from './utils';
+
+Q2. What is the importance of .config.js file ?
+Ans:    a. The .config.js file - Used to store and manage the configuration of your React application.
+        b. A JavaScript file located at root of your project directory.
+        c. Usage:
+
+            1. API endpoint - that your application use to fetch data
+            2. database connection settings.
+            3. email server settings.
+            4. logging settings.
+            5. application's title and description.
+
+Q3. What are React Hooks ?
+Ans:    a. React Hooks - set of functions that let you use
+                        state and other React features without writing a class.
+        b. Official React Hooks - 15
+            useState    
+            useEffect
+            useContext
+            useReducer
+            useCallback
+            useMemo
+            useRef
+            useImperativeHandle
+            useLayoutEffect
+            useDebugValue
+            useTransition
+            useDeferredValue
+            useId
+            useMemoizedProps
+            useStaticQuery
+            useTag
+        c. added in - version 16.8
+
+Q4. Why do we need a useState Hook ?
+Ans:    A. Store user input 
+            - to store input from the user.
+        B. Preserve state between rerenders 
+            - allowing you to easily set up the data you want to change during a click event.
+        C. Trigger re-renders
+            - triggers re-renders when the state value changes.
