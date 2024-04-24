@@ -1,0 +1,15 @@
+*****************************************************HARI OHM***********************************************************
+
+i. Solving Swiggy Live API Issue:
+    A. How to solve this ?
+
+        1. First find out live swiggy API:
+            --> Goto swiggy.com
+            --> On inspecting, just select clear and select and fetch/XXR to see only fetch APIs
+            --> In Body.js, Under fetchData method, change data i.e. API link, setListOfRestaurants, setFilteredRestaurant
+            --> Might get other errors, due to key name get's changed
+
+ii. In 6.2 lecture:
+    A. Way to handle CORS --> https://nordicapis.com/10-free-to-use-cors-proxies/
+
+            1. They say it'll work even without CORS extension. (not working for me)

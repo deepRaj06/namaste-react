@@ -1,4 +1,5 @@
 ***************************HARI OHM**********************************
+
 Q1. What is the difference between Named Export, default export and * as export ?
 Ans:    A. Named Export - Under single file, you want to import/export multiple components or values
             a. import { add, subtract } from './utils';

@@ -1,7 +1,9 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import resList from "../utils/mockData";
 import RestaurantCard from "./RestaurantCard";
 import resList from "../utils/mockData";
+import Shimmer from "./Shimmer";
+import { Link } from "react-router-dom";
 
 const Body = () => {
 
@@ -50,9 +52,9 @@ const Body = () => {
   //   },
   // ];
 
-  // Local State variable by react - super powerful variable
-  const [listofRestaurants, setListofRestaurants] = useState(
-    resList
+  // // Local State variable by react - super powerful variable
+  // const [listofRestaurants, setListofRestaurants] = useState([]
+  // resList
   //   [
   //     {
   //       info: {
@@ -96,24 +98,93 @@ const Body = () => {
   //         },
   //       },
   //     },
-  
+
   // ]
-  );
+  // );
+
+  // Local State variable by react - super powerful variable
+  const [listofRestaurants, setListofRestaurants] = useState([])
+  // filter state
+  const [searchText, setSearchText] = useState('')
+  // filtered restuarant
+  const [filteredRestaurant, setFilteredRestaurant] = useState([])
 
   // setListofRestaurants is used to update the listOfRestaurantsJS. 
 
   // normal js variable
-  let listOfRestaurantsJS = []
+  // let listOfRestaurantsJS = []
 
-  return (
+  // useEffect 
+
+  // working will be like
+  // after completely rendering Body.js, useEffect function will be called.
+  // i.e. Body.js(rendering --> callback function of useEffect() will be called.)
+  useEffect(() => {
+    console.log("useeffect called")  // printed 2nd
+    // fetch is provided by browsers
+    fetchData();
+  }, []);
+
+  // 28.743025092034216, 77.11133322539672
+  const fetchData = async () => {
+    // const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.6126255&lng=77.04108959999999&page_type=DESKTOP_WEB_LISTING")
+    // new api
+    // const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.671959&lng=77.298696&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+    // new api with cors plugin --> https://cors.sh/ + ? + url
+    const data = await fetch("https://www.swiggy.com/dapi/restaurants/list/v5?lat=28.671959&lng=77.298696&is-seo-homepage-enabled=true&page_type=DESKTOP_WEB_LISTING")
+
+
+
+    const json = await data.json()
+    console.log("json", json);
+    // json.data.success.cards
+    // now we are going to render dynamic data we are getting from API and setting it into setListOfRestaurants
+    // setListofRestaurants(json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants)
+    setListofRestaurants(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    setFilteredRestaurant(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+  }
+
+  // whenever state variables update, react triggers a reconciliation cycle(re-renders the component)
+  console.log("Body rendered")  // printed 1st
+
+  // conditional rendering
+  // if(listofRestaurants.length === 0){
+  //   return <Shimmer />
+  // }
+
+
+  // instead of conditional rendering, we'll use ternary operator
+  return listofRestaurants?.length === 0 ? (
+    <Shimmer />
+  ) : (
     <div className="body">
       {/* <div className="search">Search</div> */}
       <div className="filter">
+        {/* Search Div Starts*/}
+        <div className="search">
+
+          <input type="text" className="search-box" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+
+          <button onClick={() => {
+            // Filter the restaurant cards and update the UI
+            // searchText - To get that data from input box, we need to get that from value
+            console.log(searchText)
+            // filter logic over Restaurant List
+            const filteredRestaurant = listofRestaurants.filter((res) => {
+              console.log("filteredRestaurant", res)
+              return res?.info?.name.toLowerCase().includes(searchText.toLowerCase())
+
+            });
+            // console.log("filteredRestaurant", res)
+            setFilteredRestaurant(filteredRestaurant)
+          }}>Search</button>
+        </div>
+        {/* Search Div Ends*/}
         <button
           className="filter-btn"
           onClick={() => {
             // console.log("Button clicked!");
-            const filteredList = listofRestaurants.filter((res) => res.info.avgRating > 4);
+            const filteredList = listofRestaurants?.filter((res) => res.info.avgRating > 4);
             console.log("listofRestaurants", filteredList);
 
             setListofRestaurants(filteredList)
@@ -126,11 +197,14 @@ const Body = () => {
         </button>
       </div>
       <div className="res-container">
-        {listofRestaurants.map((restaurant) => (
-          <RestaurantCard
-            resData={restaurant}
-            key={restaurant?.restaurant?.id}
-          />
+        {filteredRestaurant?.map((restaurant) => (
+          <Link key={restaurant?.info?.id}
+            to={`/restaurants/${restaurant?.info?.id}`}>
+            <RestaurantCard
+              resData={restaurant}
+            />
+          </Link>
+
         ))}
       </div>
     </div>

@@ -28,8 +28,8 @@ Ans: npx - Node Package Execute
     Link: https://www.codingninjas.com/studio/library/difference-between-npm-and-npx
 
 Q5. Difference between dependencies and devDependencies ?
-Ans: devDependencies - packages required in production.
-    normal dependencies - packages required in development and testing phase.
+Ans: normal devDependencies - packages required in production.
+     devDependencies        - packages required in development and testing phase.
 
 Q6. What is Tree Shaking?
 Ans: Tree Shaking - Removal of dead code

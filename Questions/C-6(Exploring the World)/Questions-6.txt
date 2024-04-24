@@ -1,0 +1,117 @@
+*********************************************HARI OHM********************************************************
+Q1. What is Microservice?
+Ans:    Defn:   Microservices ( Microservice Architecture ) is an architectural style that structures an
+                application as a collection of services that are:
+                    a. Independently deployable
+                    b. Loosely coupled
+
+
+        In simple words,
+                        1. We have different services for different job.
+                            a. Backend
+                            b. UI
+                            c. Auth
+                            d. SMS
+                            e. Email Notification
+
+                        2. All these services combine to form a big app - This is known as separation of concerns.
+                        3. All these services talk to each other depending upon the use cases - Single responsibility Principle
+
+Q2. What is a Monolith architecture ?
+Ans:    Defn:   A monolithic architecture is a singular, large computing network with one code base
+                that couples all the business together.
+                To make changes to this sort of application requires updating the entire stack by accessing the code base
+                and building and deploying an updated version of the server-side interface.
+
+        In simple words,
+                        Earlier architecture made using Monolothic have single codebase.
+                        Under single project,
+                            API, UI, JSP, AUTH, DB, SMS written in same service.
+                        Even if you need to change a color, you need to compile and build
+                        this whole project.
+
+Q3. Explained in Q1 and Q2.
+
+Q4. Why do we need a useEffect Hook ?
+Ans:    Usage:  Connecting to an External System ( API ):
+                    1. Some components need to stay connected to the network, some browser API, or a third-party library, 
+                        while they are displayed on the page.
+                    2. These systems are not controlled by React, so they are called external.
+                To connect your component to some external system, call useEffect at the top level of your component.
+
+        Defn:   1. Takes two arguments i.e. 
+
+                    a. first argument --> arrow function(callback function) --> useEffect(() => {})
+                    b. second argument --> dependency array --> useEffect(() => {}, [dependency])
+
+                2. callback function will be called --> after your component renders.
+
+                3. Conclusion:
+
+                    useEffect(() => {
+                        console.log("useEffect called!)     // called 2nd
+                    }, [])
+
+
+                    console.log("Body rendered")    // called 1st
+
+
+Q5. What is Optional Chaining ?
+Ans:    Defn:   The optional chaining (?.) operator accesses an object's property or calls a function.
+                If the object accessed or function called using this operator is undefined or null,
+                the expression evaluates to undefined instead of throwing an error.
+
+        E.g.    const home = {
+                    name: 'Villa',
+                    fish: {
+                        name: 'tinfoil'
+                    }
+                }
+
+                const fishName = home.fish?.name;
+                console.log(fishName);
+
+Q6. What is Shimmer UI ?
+Ans:        a. Defn - It's like loading fake page untill we get the actual data from API.
+                    Created a file Shimmer.js
+        
+            b. Conditional Rendering - 
+                if(listofRestaurants.length === 0){
+                    return <Shimmer />
+                }
+
+Q7. What is difference between JS expression and JS statement ?
+Ans:    Expression - A piece of code that evaluates to a single value.
+                    E.g.    a. 1+1 // Arithmetic operations
+                            b. Math.max(1, 2) // Function call  
+                            c. let x = 1;
+
+        Statement - A piece of code that performs an action.
+                    E.g.    a. for(let i=0; i<10; i++){     // Loops
+                                    // Do something
+                                }
+                            b. if(x > 10){                  // Conditional
+                                    // Do something
+                                }
+                            c. let x = 1                    // Declarations
+
+Q8. What is Conditional Rendering, explain with a code example?
+Ans:    Defn:   Conditional Rendering is a technique in React that allows you to display
+                different UI elements based on specific conditions.
+
+        E.g.:   A toggle button on click of which it shows login and when clicked second
+                time it shows logout button.
+
+Q9. What is CORS ?
+Ans:    Defn:   Cross-origin resource sharing(CORS) is a browser security feature
+                that lets client web application interact with resources in other domains.
+            
+        E.g.    An application may use CORS to pull videos from a video platform API,
+                use fonts from a public font library,
+                or display weather data from a national weather database.
+
+Q10. What is use of `const json = await data.json();` in getRestaurants?
+Ans:    Here data is in streamable format, now to convert the data into json format,
+        nned to apply data.json() which will give you final results of an API.
+
+
