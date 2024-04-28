@@ -1,6 +1,7 @@
 import { LOGO_URL } from "../utils/constants";
 import { useState } from "react"; // named variable
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Header = () => {
 
@@ -11,6 +12,10 @@ const Header = () => {
 
   // setBtnNameReact - function to update the variable
   // when this setBtnNameReact will change, react will re-render the Hedaer component and all the updated values will be there
+
+  // onlinestatus
+
+  const onlineStatus = useOnlineStatus();
   return (
     <div className="header">
       <div className="logo-container">
@@ -21,6 +26,11 @@ const Header = () => {
       </div>
       <div className="nav-items">
         <ul>
+          <li> 
+            {/* <Link to='/'> */}
+              Online Status: {onlineStatus ? '🟢' : '🔴'}
+            {/* </Link> */}
+          </li>
           <li> <Link to='/'>
             Home
           </Link></li>
@@ -32,6 +42,11 @@ const Header = () => {
           <li>
             <Link to='/contact'>
               Contact Us
+            </Link>
+          </li>
+          <li>
+            <Link to='/grocery'>
+              Grocery
             </Link>
           </li>
           <li>Cart</li>

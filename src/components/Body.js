@@ -4,6 +4,7 @@ import RestaurantCard from "./RestaurantCard";
 import resList from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
+import useOnlineStatus from "../utils/useOnlineStatus";
 
 const Body = () => {
 
@@ -142,6 +143,18 @@ const Body = () => {
     // setListofRestaurants(json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants)
     setListofRestaurants(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
     setFilteredRestaurant(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+  }
+
+  // checking online/offline status
+
+  const onlineStatus = useOnlineStatus();
+
+  if(onlineStatus === false){
+    return (
+      <h1>
+        Looks like you're offline! Please check your internet connection;
+      </h1>
+    )
   }
 
   // whenever state variables update, react triggers a reconciliation cycle(re-renders the component)
