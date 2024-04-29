@@ -172,13 +172,15 @@ const Body = () => {
   ) : (
     <div className="body">
       {/* <div className="search">Search</div> */}
-      <div className="filter">
+      <div className="filter flex ">
         {/* Search Div Starts*/}
-        <div className="search">
+        <div className="search m-4 p-4">
 
-          <input type="text" className="search-box" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+          <input type="text" className="search-box border border-solid border-black" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
 
-          <button onClick={() => {
+          <button 
+          className="px-4 py-2 bg-green-100 m-4 rounded-lg"
+            onClick={() => {
             // Filter the restaurant cards and update the UI
             // searchText - To get that data from input box, we need to get that from value
             console.log(searchText)
@@ -193,23 +195,26 @@ const Body = () => {
           }}>Search</button>
         </div>
         {/* Search Div Ends*/}
-        <button
-          className="filter-btn"
-          onClick={() => {
-            // console.log("Button clicked!");
-            const filteredList = listofRestaurants?.filter((res) => res.info.avgRating > 4);
-            console.log("listofRestaurants", filteredList);
+        <div className="search m-4 p-4 flex items-center rounded-lg">
+          <button
+            className="filter-btn px-4 py-2 bg-gray-50"
+            onClick={() => {
+              // console.log("Button clicked!");
+              const filteredList = listofRestaurants?.filter((res) => res.info.avgRating > 4);
+              console.log("listofRestaurants", filteredList);
 
-            setListofRestaurants(filteredList)
-          }}
-          onMouseOver={() => {
-            console.log("Button clicked!");
-          }}
-        >
-          Top Rated Restaurants
-        </button>
+              setListofRestaurants(filteredList)
+            }}
+            onMouseOver={() => {
+              console.log("Button clicked!");
+            }}
+          >
+            Top Rated Restaurants
+          </button>
+        </div>
+        
       </div>
-      <div className="res-container">
+      <div className="flex flex-wrap">
         {filteredRestaurant?.map((restaurant) => (
           <Link key={restaurant?.info?.id}
             to={`/restaurants/${restaurant?.info?.id}`}>

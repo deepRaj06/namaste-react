@@ -17,39 +17,39 @@ const Header = () => {
 
   const onlineStatus = useOnlineStatus();
   return (
-    <div className="header">
+    <div className="flex justify-between bg-pink-100 shadow-lg sm:bg-yellow-50 lg:lg-green-50">
       <div className="logo-container">
         <img
-          className="logo"
+          className="w-56"
           src={LOGO_URL}
         />
       </div>
-      <div className="nav-items">
-        <ul>
-          <li> 
+      <div className="flex items-center">
+        <ul className="flex p-4 m-4">
+          <li className="px-4"> 
             {/* <Link to='/'> */}
               Online Status: {onlineStatus ? '🟢' : '🔴'}
             {/* </Link> */}
           </li>
-          <li> <Link to='/'>
+          <li className="px-4"> <Link to='/'>
             Home
           </Link></li>
           {/* Using normal achor tag, never use this in react here used for demonstration purpose*/}
-          <li>
+          <li className="px-4">
             <a href="/about">About Us</a>
           </li>
           {/* always use this  */}
-          <li>
+          <li className="px-4">
             <Link to='/contact'>
               Contact Us
             </Link>
           </li>
-          <li>
+          <li className="px-4">
             <Link to='/grocery'>
               Grocery
             </Link>
           </li>
-          <li>Cart</li>
+          <li className="px-4">Cart</li>
           <button className="Login" onClick={() => {
             // btnName = "Logout"
             btnNameReact === "Login" ?
