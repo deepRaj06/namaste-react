@@ -1,10 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext, useEffect, useState } from "react";
 import resList from "../utils/mockData";
-import RestaurantCard from "./RestaurantCard";
+import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import resList from "../utils/mockData";
 import Shimmer from "./Shimmer";
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import UserContext from "../utils/UserContext";
 
 const Body = () => {
 
@@ -110,6 +111,11 @@ const Body = () => {
   // filtered restuarant
   const [filteredRestaurant, setFilteredRestaurant] = useState([])
 
+  // higher order component
+  // Passing component RestaurantCard inside withPromotedLabel component 
+  // that will return new promoted component inside RestuarantCardPromoted
+  const RestuarantCardPromoted = withPromotedLabel(RestaurantCard);
+
   // setListofRestaurants is used to update the listOfRestaurantsJS. 
 
   // normal js variable
@@ -137,12 +143,12 @@ const Body = () => {
 
 
     const json = await data.json()
-    console.log("json", json);
+    // console.log("json", json);
     // json.data.success.cards
     // now we are going to render dynamic data we are getting from API and setting it into setListOfRestaurants
     // setListofRestaurants(json?.data?.success?.cards[4]?.gridWidget?.gridElements?.infoWithStyle?.restaurants)
-    setListofRestaurants(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
-    setFilteredRestaurant(json?.data?.cards[3]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    setListofRestaurants(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
+    setFilteredRestaurant(json?.data?.cards[2]?.card?.card?.gridElements?.infoWithStyle?.restaurants)
   }
 
   // checking online/offline status
@@ -158,13 +164,16 @@ const Body = () => {
   }
 
   // whenever state variables update, react triggers a reconciliation cycle(re-renders the component)
-  console.log("Body rendered")  // printed 1st
+  console.log("Body rendered", listofRestaurants)  // printed 1st
 
   // conditional rendering
   // if(listofRestaurants.length === 0){
   //   return <Shimmer />
   // }
 
+
+  // 
+  const {setUserName, loggedInUser} = useContext(UserContext)
 
   // instead of conditional rendering, we'll use ternary operator
   return listofRestaurants?.length === 0 ? (
@@ -194,6 +203,27 @@ const Body = () => {
             setFilteredRestaurant(filteredRestaurant)
           }}>Search</button>
         </div>
+        {/* <div className="search m-4 p-4">
+
+          <input type="text" className="search-box border border-solid border-black" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+
+          <button 
+          className="px-4 py-2 bg-green-100 m-4 rounded-lg"
+            onClick={() => {
+            // Filter the restaurant cards and update the UI
+            // searchText - To get that data from input box, we need to get that from value
+            console.log(searchText)
+            // filter logic over Restaurant List
+            const filteredRestaurant = listofRestaurants.filter((res) => {
+              console.log("filteredRestaurant", res)
+              return res?.info?.name.toLowerCase().includes(searchText.toLowerCase())
+
+            });
+            // console.log("filteredRestaurant", res)
+            setFilteredRestaurant(filteredRestaurant)
+          }}>Search</button>
+        </div> */}
+        
         {/* Search Div Ends*/}
         <div className="search m-4 p-4 flex items-center rounded-lg">
           <button
@@ -212,15 +242,23 @@ const Body = () => {
             Top Rated Restaurants
           </button>
         </div>
-        
+        {/* Updating UserContext with input starts*/}
+        <div className="search m-4 p-4 flex items-center">
+          <label>User Name: </label>
+          <input type="text" className="search-box border border-solid border-black mx-2 p-2" value={loggedInUser} onChange={(e) => setUserName(e.target.value)} />
+
+        </div>
+        {/* Updating UserContext with input ends*/}
       </div>
       <div className="flex flex-wrap">
         {filteredRestaurant?.map((restaurant) => (
           <Link key={restaurant?.info?.id}
             to={`/restaurants/${restaurant?.info?.id}`}>
-            <RestaurantCard
-              resData={restaurant}
-            />
+          {/* If the rest is promoted then add a promoted label to it */}
+          {
+            restaurant?.data?.promoted ? <RestuarantCardPromoted resData={restaurant}/> : <RestaurantCard resData={restaurant}/>
+          }
+            
           </Link>
 
         ))}

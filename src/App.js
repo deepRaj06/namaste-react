@@ -1,4 +1,4 @@
-import React, { Suspense, lazy } from "react"; 
+import React, { Suspense, lazy, useEffect, useState } from "react"; 
 import ReactDOM from "react-dom/client";
 import Header from "./components/Header";
 import Body from "./components/Body";
@@ -9,22 +9,39 @@ import Contact from "./components/Contact";
 import Error from "./components/Error";
 import RestuarantMenu from "./components/RestaurantMenu";
 import Login from "./components/Login";
+import UserContext from "./utils/UserContext";
 // import Grocery from "./components/Grocery";
 
 // import is a function
 const Grocery = lazy(() => import("./components/Grocery"))
 
 const AppLayout = () => {
-  return <div className="app">
-    <Header/>
-    {/* if path == '/' */}
-    {/* <Body/> */}
-    {/* if path == '/about' */}
-    {/* <About/> */}
-    {/* if path == '/contact' */}
-    {/* <Contact/> */}
-    <Outlet/>
-  </div>;
+
+  // authentication
+  const [userName, setUserName] = useState();
+
+  useEffect(() => {
+    const data = {
+      name: "Deepak Rajput"
+    };
+    setUserName(data.name)
+  }, []);
+
+
+  return (
+      <UserContext.Provider value={{ loggedInUser: userName, setUserName}}>
+        <div className="app">
+          <Header/>
+          {/* if path == '/' */}
+          {/* <Body/> */}
+          {/* if path == '/about' */}
+          {/* <About/> */}
+          {/* if path == '/contact' */}
+          {/* <Contact/> */}
+          <Outlet/>
+        </div>
+      </UserContext.Provider>
+  );
 };
 
 // 2. List of configuration to be provided to BrowserRouter

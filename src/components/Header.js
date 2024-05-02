@@ -2,6 +2,8 @@ import { LOGO_URL } from "../utils/constants";
 import { useState } from "react"; // named variable
 import { Link } from "react-router-dom";
 import useOnlineStatus from "../utils/useOnlineStatus";
+import { useContext } from "react";
+import UserContext from "../utils/UserContext";
 
 const Header = () => {
 
@@ -16,6 +18,12 @@ const Header = () => {
   // onlinestatus
 
   const onlineStatus = useOnlineStatus();
+
+  // getting data from UserContext, to get data from UserContext we need to pass UserContext in useContext
+  // we can have as many context as many we want 
+  const {loggedInUser} = useContext(UserContext);
+  console.log(loggedInUser);
+
   return (
     <div className="flex justify-between bg-pink-100 shadow-lg sm:bg-yellow-50 lg:lg-green-50">
       <div className="logo-container">
@@ -61,6 +69,11 @@ const Header = () => {
             {/* {btnName} */}
             {btnNameReact}
           </button>
+
+          {/* logged in user info */}
+          <li className="px-4">
+            {loggedInUser}
+          </li>
         </ul>
       </div>
     </div>
