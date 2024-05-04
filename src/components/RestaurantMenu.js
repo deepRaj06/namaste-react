@@ -41,7 +41,7 @@ const RestuarantMenu = () => {
             <p className="font-bold text-lg">{cuisines.join(", ")} - {costForTwoMessage}</p>
             {/* categories accordios */}
 
-            { categories.map((category) => (
+            { categories.map((category, index) => (
                 // controlled component
                     <RestaurantCategory key={category?.card?.card.title} data={category?.card?.card} showItem={index === showIndex ? true : false} setShowIndex={() => setShowIndex(index)} dummy={dummy}/>
             ))}
