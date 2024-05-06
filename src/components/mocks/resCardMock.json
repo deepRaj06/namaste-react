@@ -1,0 +1,171 @@
+{
+    "@type": "type.googleapis.com/swiggy.presentation.food.v2.Restaurant",
+    "info": {
+        "id": "493099",
+        "name": "Subway",
+        "city": "Delhi",
+        "slugs": {
+            "restaurant": "subway-mayur-vihar-mayur-vihar",
+            "city": "delhi"
+        },
+        "uniqueId": "e51e6528-4859-48c8-8fed-e84c17dc2d76",
+        "cloudinaryImageId": "63178e3e64d503a479f2a2048a474552",
+        "locality": "Madhu Vihar",
+        "areaName": "IP Extension",
+        "costForTwo": "40000",
+        "costForTwoMessage": "₹400 for two",
+        "cuisines": [
+            "Salads",
+            "Snacks"
+        ],
+        "avgRating": 4,
+        "feeDetails": {
+            "restaurantId": "493099",
+            "fees": [
+                {
+                    "name": "TYPE_DISTANCE",
+                    "fee": 7300
+                },
+                {
+                    "name": "TYPE_TIME"
+                }
+            ],
+            "totalFee": 7300,
+            "title": "Delivery Charge",
+            "amount": "7300",
+            "icon": "v1648208530/surgecreatives/info",
+            "message": "<b>Far (5.5 kms)</b> | Additional delivery fee will apply"
+        },
+        "parentId": "2",
+        "avgRatingString": "4.0",
+        "totalRatingsString": "1K+ ratings",
+        "sla": {
+            "restaurantId": "493099",
+            "deliveryTime": 35,
+            "minDeliveryTime": 35,
+            "maxDeliveryTime": 40,
+            "lastMileTravel": 5.5,
+            "serviceability": "SERVICEABLE",
+            "stressFactor": 1,
+            "rainMode": "RAIN_MODE_NONE",
+            "longDistance": "LONG_DISTANCE_NOT_LONG_DISTANCE",
+            "zoneId": 224,
+            "slaString": "35-40 MINS",
+            "lastMileTravelString": "5.5 km",
+            "iconType": "ICON_TYPE_EMPTY"
+        },
+        "availability": {
+            "nextCloseTime": "2024-05-06 09:59:00",
+            "visibility": true,
+            "opened": true,
+            "restaurantClosedMeta": {}
+        },
+        "aggregatedDiscountInfo": {
+            "shortDescriptionList": [
+                {
+                    "discountType": "Flat",
+                    "operationType": "RESTAURANT"
+                },
+                {
+                    "discountType": "Percentage",
+                    "operationType": "RESTAURANT"
+                }
+            ],
+            "descriptionList": [
+                {
+                    "meta": "Flat ₹50 off | Above ₹600",
+                    "discountType": "Flat",
+                    "operationType": "RESTAURANT"
+                },
+                {
+                    "meta": "20% off upto ₹125 | Use KOTAK811 Above ₹499",
+                    "discountType": "Percentage",
+                    "operationType": "RESTAURANT"
+                }
+            ],
+            "visible": true
+        },
+        "badges": {},
+        "slugString": "subway-mayur-vihar-mayur-vihar",
+        "multiOutlet": true,
+        "isOpen": true,
+        "labels": [
+            {
+                "title": "Timings",
+                "message": "null"
+            },
+            {
+                "title": "Address",
+                "message": "SHOP NO.2,3 & 12 of B-12,GroundFloor,Gurudwara Road,MadhuVihar, MAYUR VIHAR, East , Delhi,110092"
+            },
+            {
+                "title": "Cuisines",
+                "message": "Salads,Snacks"
+            }
+        ],
+        "logo": "v1675752975/Brand logo/Subway",
+        "totalRatings": 1000,
+        "aggregatedDiscountInfoV2": {
+            "shortDescriptionList": [
+                {
+                    "discountType": "Flat",
+                    "operationType": "RESTAURANT"
+                },
+                {
+                    "discountType": "Percentage",
+                    "operationType": "RESTAURANT"
+                }
+            ],
+            "descriptionList": [
+                {
+                    "meta": "Flat ₹50 off | Above ₹600",
+                    "discountType": "Flat",
+                    "operationType": "RESTAURANT"
+                },
+                {
+                    "meta": "20% off upto ₹125 | Use KOTAK811 Above ₹499",
+                    "discountType": "Percentage",
+                    "operationType": "RESTAURANT"
+                }
+            ],
+            "couponDetailsCta": "View coupon details"
+        },
+        "type": "F",
+        "headerBanner": {
+            "url": "swiggy://webview?is_external=false&webview_url=https://www.swiggy.com/restaurant-info/493099"
+        },
+        "expectationNotifiers": [
+            {
+                "text": "<b>Far (5.5 kms)</b> | Additional delivery fee will apply",
+                "icon": {
+                    "imageId": "v1648208530/surgecreatives/info"
+                },
+                "popup": {
+                    "cta": {}
+                },
+                "type": "DISTANCE_FEE_NON_FOOD_LM",
+                "enrichedText": "<b>Far (5.5 kms)</b> | Additional delivery fee will apply",
+                "halfCardPopup": {
+                    "halfCardPopupHeader": {}
+                },
+                "trailingIcon": {}
+            }
+        ],
+        "ratingSlab": "RATING_SLAB_4",
+        "orderabilityCommunication": {
+            "title": {},
+            "subTitle": {},
+            "message": {},
+            "customIcon": {}
+        },
+        "hasBestsellerItems": true,
+        "hasGuiltfreeItems": true,
+        "cartOrderabilityNudgeBanner": {
+            "parameters": {},
+            "presentation": {}
+        },
+        "latLong": "28.635641,77.303139",
+        "backgroundImageOverlayInfo": {}
+    },
+    "analytics": {}
+}
