@@ -1,5 +1,4 @@
 import { useContext, useEffect, useState } from "react";
-import resList from "../utils/mockData";
 import RestaurantCard, { withPromotedLabel } from "./RestaurantCard";
 import resList from "../utils/mockData";
 import Shimmer from "./Shimmer";
@@ -185,7 +184,7 @@ const Body = () => {
         {/* Search Div Starts*/}
         <div className="search m-4 p-4">
 
-          <input type="text" className="search-box border border-solid border-black" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
+          <input type="text" data-testid="searchInput" className="search-box border border-solid border-black" value={searchText} onChange={(e) => setSearchText(e.target.value)} />
 
           <button 
           className="px-4 py-2 bg-green-100 m-4 rounded-lg"
@@ -233,7 +232,8 @@ const Body = () => {
               const filteredList = listofRestaurants?.filter((res) => res.info.avgRating > 4);
               console.log("listofRestaurants", filteredList);
 
-              setListofRestaurants(filteredList)
+              // setListofRestaurants(filteredList)
+              setFilteredRestaurant(filteredList)
             }}
             onMouseOver={() => {
               console.log("Button clicked!");

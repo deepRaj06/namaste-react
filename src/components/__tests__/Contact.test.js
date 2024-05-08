@@ -9,6 +9,27 @@ import "@testing-library/jest-dom";
 // 8. You can have describe inside describe, supose you want to group 3 and 4 inside describe, you can do that
 describe("Contact us page test case", () => {
 
+    //1.1 after Search.test.js coming here to explain some more functions
+    beforeAll(() => {
+        // it will run before all the test cases
+        console.log("Before all")
+    })
+    // 1.2 for cleanup task
+    beforeEach(() => {
+        // it will run before each test cases
+        console.log("Before each")
+    })
+    // 1.3 for cleanup task
+    afterAll(() => {
+        // it will run after all the test cases
+        console.log("After all")
+    })
+    // 1.4 for cleanup task
+    afterEach(() => {
+        // it will run after each test cases
+        console.log("After each")
+    })
+
     // 1. Finding if heading exist, when contact component rendered
     test("Should load heading inside contact us component", () => {
 
